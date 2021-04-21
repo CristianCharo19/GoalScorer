@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">GoalScorer</string>
+    <string name="name">Nombre</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="repeat_password">Repita la contraseña</string>
+    <string name="register">Registrar</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="register_new_account">Registar una nueva cuenta</string>
+    <string name="password_error">Las contraseñas no son iguales</string>
+    <string name="form_error">Debe digitar los campos requeridos</string>
+    <string name="must_register">Debe registrarse</string>
+    <string name="least_password">Contraseña minima de 6 digitos</string>
+    <string name="required_text">Campo requerido</string>
+</resources>
