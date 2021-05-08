@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         val timer = Timer()
         timer.schedule(timerTask {
             goToLoginActivity()
-        }, 1000
+        }, 2000
         )
     }
 

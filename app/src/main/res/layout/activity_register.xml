@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
-    android:background="@color/gainsboro">
+    android:background="@color/md_blue_grey_500">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_text_input_layout"
@@ -122,6 +122,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_rounded"
         android:text="@string/register"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
