@@ -67,6 +67,25 @@ class LoginActivity : AppCompatActivity() {
             return
         }else{
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+            val emailLog = loginBainding.emailEditText.text.toString()
+            val passwordLog = loginBainding.passwordEditText.text.toString()
+            val extras = intent.extras
+            val email = extras?.getString("email")
+            val password = extras?.getString("password")
+            if (emailLog == email && passwordLog == password) {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("password", password)
+                startActivity(intent)
+                finish()
+                loginBainding.passwordTextInputLayout.error = null
+            } else {
+                if (emailLog == email){
+                    loginBainding.emailTextInputLayout.error = "Los correos no coinciden"
+                }else{
+                    loginBainding.passwordTextInputLayout.error = "Las contraseñas no coinciden"
+                }
+            }
         }
     }
 
@@ -100,7 +119,7 @@ class LoginActivity : AppCompatActivity() {
             loginBainding.passwordTextInputLayout.error = "El campo no puede estar vacio"
             false
         }else if (!passwordRegex.matcher(passwordLog).matches()){
-            loginBainding.passwordTextInputLayout.error = "La contraseña es no cumple"
+            loginBainding.passwordTextInputLayout.error = "La contraseña no cumple"
             false
         }else{
             loginBainding.passwordTextInputLayout.error = null
