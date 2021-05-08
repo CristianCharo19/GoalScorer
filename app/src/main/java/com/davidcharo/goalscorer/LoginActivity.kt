@@ -66,7 +66,6 @@ class LoginActivity : AppCompatActivity() {
         if (false in result){
             return
         }else{
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             val emailLog = loginBainding.emailEditText.text.toString()
             val passwordLog = loginBainding.passwordEditText.text.toString()
             val extras = intent.extras
@@ -80,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
                 loginBainding.passwordTextInputLayout.error = null
             } else {
-                if (emailLog == email){
+                if (emailLog != email){
                     loginBainding.emailTextInputLayout.error = "Los correos no coinciden"
                 }else{
                     loginBainding.passwordTextInputLayout.error = "Las contraseñas no coinciden"
