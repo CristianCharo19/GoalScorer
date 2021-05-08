@@ -7,21 +7,21 @@
     <fragment
         android:id="@+id/navigation_score"
         android:name="com.davidcharo.goalscorer.FragmentScore"
-        android:label="fragment_score"
+        android:label="Resultados"
         tools:layout="@layout/fragment_score" />
     <fragment
         android:id="@+id/navigation_news"
         android:name="com.davidcharo.goalscorer.FragmentNews"
-        android:label="fragment_news"
+        android:label="Noticias"
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.davidcharo.goalscorer.FragmentFavorite"
-        android:label="fragment_favorite"
+        android:label="Favoritos"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/navigation_more"
         android:name="com.davidcharo.goalscorer.FragmentMore"
-        android:label="fragment_more"
+        android:label="Más"
         tools:layout="@layout/fragment_more" />
 </navigation>
