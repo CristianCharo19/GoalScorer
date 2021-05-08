@@ -13,7 +13,7 @@
     <string name="must_register">Debe registrarse</string>
     <string name="least_password">La contraseña debe tener minimo de 6 caracteres</string>
     <string name="required_text">Campo requerido</string>
-    <string name="unwanted_mail">Ingrese un correo electrónico como ejemplo@gmail.com</string>
+    <string name="unwanted_mail">Ingrese un correo electrónico como\nejemplo@gmail.com</string>
     <string name="mail_match">Los correos no coinciden</string>
     <string name="password_match">Las contraseñas no coinciden</string>
     <string name="empty_field">El campo no puede estar vacio</string>

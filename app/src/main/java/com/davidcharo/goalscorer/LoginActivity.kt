@@ -2,7 +2,6 @@ package com.davidcharo.goalscorer
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.util.PatternsCompat
 import com.davidcharo.goalscorer.databinding.ActivityLoginBinding
@@ -40,8 +39,6 @@ class LoginActivity : AppCompatActivity() {
         if (false in result) {
             return
         } else {
-            Toast.makeText(this, "Suceess", Toast.LENGTH_SHORT).show()
-            //loginBainding.loginButton.visibility = View.VISIBLE
             val emailLog = loginBainding.emailEditText.text.toString()
             val passwordLog = loginBainding.passwordEditText.text.toString()
             val extras = intent.extras
@@ -53,53 +50,56 @@ class LoginActivity : AppCompatActivity() {
                 intent.putExtra("password", password)
                 startActivity(intent)
                 finish()
+                cleanViews()
                 loginBainding.passwordTextInputLayout.error = null
             } else {
-                if (emailLog != email) {
+                if (emailLog != email && passwordLog != password) {
                     loginBainding.emailTextInputLayout.error = getString(R.string.mail_match)
-                } else {
                     loginBainding.passwordTextInputLayout.error = getString(R.string.password_match)
+                } else {
+                    if (emailLog != email) {
+                        loginBainding.emailTextInputLayout.error = getString(R.string.mail_match)
+                    } else {
+                        loginBainding.passwordTextInputLayout.error = getString(R.string.password_match)
+                    }
                 }
             }
         }
     }
 
-    private fun validateEmail(): Boolean {
-        val emailLog = loginBainding.emailEditText.text.toString()
-        return if (emailLog.isEmpty()) {
-            loginBainding.emailTextInputLayout.error = getString(R.string.empty_field)
-            false
-        } else if (!PatternsCompat.EMAIL_ADDRESS.matcher(emailLog).matches()) {
-            loginBainding.emailTextInputLayout.error = getString(R.string.unwanted_mail)
-            false
-        } else {
-            loginBainding.emailTextInputLayout.error = null
-            true
+        private fun validateEmail(): Boolean {
+            val emailLog = loginBainding.emailEditText.text.toString()
+            return if (emailLog.isEmpty()) {
+                loginBainding.emailTextInputLayout.error = getString(R.string.empty_field)
+                false
+            } else if (!PatternsCompat.EMAIL_ADDRESS.matcher(emailLog).matches()) {
+                loginBainding.emailTextInputLayout.error = getString(R.string.unwanted_mail)
+                cleanViews()
+                false
+            } else {
+                loginBainding.emailTextInputLayout.error = null
+                true
+            }
         }
-    }
 
-    private fun validatePassword(): Boolean {
-        val passwordLog = loginBainding.passwordEditText.text.toString()
-        val passwordRegex = java.util.regex.Pattern.compile(
-            "^" +
-                    //"(?=.*[0-9])" +             //at leats 1 digit
-                    //"(?=.*[a-z])" +             //at leats 1 lower case letter
-                    //"(?=.*[A-Z])" +             //at leats 1 upper case letter
-                    //"(?=.*[@#$%^&+=])" +        //at leats 1 special character
-                    //"(?=\\S+$)" +               //no white spaces
-                    ".{6,}" +                   //at leats 6 characters
-                    "$"
-        )
-        return if (passwordLog.isEmpty()) {
-            loginBainding.passwordTextInputLayout.error = getString(R.string.empty_field)
-            false
-        } else if (!passwordRegex.matcher(passwordLog).matches()) {
-            loginBainding.passwordTextInputLayout.error = getString(R.string.least_password)
-            false
-        } else {
-            loginBainding.passwordTextInputLayout.error = null
-            true
+        private fun validatePassword(): Boolean {
+            val passwordLog = loginBainding.passwordEditText.text.toString()
+            val passwordRegex = java.util.regex.Pattern.compile(
+                "^" +
+                        ".{6,}" +                   //at leats 6 characters
+                        "$"
+            )
+            return if (passwordLog.isEmpty()) {
+                loginBainding.passwordTextInputLayout.error = getString(R.string.empty_field)
+                false
+            } else if (!passwordRegex.matcher(passwordLog).matches()) {
+                loginBainding.passwordTextInputLayout.error = getString(R.string.least_password)
+                cleanViews()
+                false
+            } else {
+                loginBainding.passwordTextInputLayout.error = null
+                true
+            }
         }
-    }
 
-}
+    }
