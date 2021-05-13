@@ -2,14 +2,18 @@ package com.davidcharo.goalscorer
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.doAfterTextChanged
 import com.davidcharo.goalscorer.databinding.ActivityLoginBinding
 import com.davidcharo.goalscorer.utils.MIN_SIZE_PASSWORD
 import com.davidcharo.goalscorer.utils.validateEmail
 import com.davidcharo.goalscorer.utils.validatePassword
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 private const val EMPTY = ""
 
@@ -17,14 +21,19 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginBainding: ActivityLoginBinding
 
+    private lateinit var auth: FirebaseAuth;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loginBainding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(loginBainding.root)
 
+        auth = Firebase.auth
+
         bindOnChangeListeners()
 
         loginBainding.loginButton.setOnClickListener {
+            signIn()
             validate()
         }
 
@@ -34,22 +43,37 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun signIn() {
+        val email = loginBainding.emailEditText.text.toString()
+        val password = loginBainding.passwordEditText.text.toString()
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d("Login", "signInWithEmail:success")
+                    val user = auth.currentUser
+                } else {
+                    Log.w("Login", "signInWithEmail:failure", task.exception)
+                    Toast.makeText(requireContext(), "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
     private fun bindOnChangeListeners() {
-        with(loginBainding){
+        with(loginBainding) {
             emailEditText.doAfterTextChanged {
                 validateEmail()
-                validateFields()
+                //validateFields()
             }
             passwordEditText.doAfterTextChanged {
                 validatePassword()
                 validateFields()
             }
         }
-
     }
 
     private fun validateFields() {
-        with(loginBainding){
+        with(loginBainding) {
             val fields = listOf(
                 validateEmail(),
                 validatePassword()
@@ -58,8 +82,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun validateFields(areValid: List<Boolean>){
-        for (isValid in areValid){
+    fun validateFields(areValid: List<Boolean>) {
+        for (isValid in areValid) {
             enableSigInButton(isValid)
             if (!isValid) break
         }
@@ -68,7 +92,6 @@ class LoginActivity : AppCompatActivity() {
     fun enableSigInButton(isEnable: Boolean) {
         loginBainding.loginButton.isEnabled = isEnable
     }
-
 
 
     private fun cleanViews() {
@@ -101,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-        }else{
+        } else {
             validateEmail()
             validatePassword()
         }
