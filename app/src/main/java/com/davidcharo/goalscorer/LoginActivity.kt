@@ -2,6 +2,7 @@ package com.davidcharo.goalscorer
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
@@ -41,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
             }
             passwordEditText.doAfterTextChanged {
                 validatePassword()
+                validateFields()
             }
         }
 
@@ -64,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun enableSigInButton(isEnable: Boolean) {
-        loginBainding.loginButton.isEnabled = true
+        loginBainding.loginButton.isEnabled = isEnable
     }
 
 

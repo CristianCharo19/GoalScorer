@@ -1,6 +1,7 @@
 package com.davidcharo.goalscorer.utils
 
 import androidx.core.util.PatternsCompat
+import com.google.android.material.textfield.TextInputEditText
 
 
 fun validateEmail(text: String): Boolean {
