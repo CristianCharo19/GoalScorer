@@ -52,10 +52,15 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("Login", "signInWithEmail:success")
                     val user = auth.currentUser
                 } else {
+                    var msg = ""
+                    if (task.exception?.localizedMessage == "The The email address is badly formatted.")
+                        msg = "El correo está mal escrito"
+                    else if (task.exception?.localizedMessage == "There is no user record corresponding to this identifier. The user may have been deleted.")
+                        msg = "No existe una cuenta con ese correo electrónico"
                     Log.w("Login", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(requireContext(), "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    
+                    Toast.makeText(baseContext, msg,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
