@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
         bindOnChangeListeners()
 
         loginBainding.loginButton.setOnClickListener {
-            signIn()
             validate()
         }
 
@@ -50,13 +49,16 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("Login", "signInWithEmail:success")
+                    goToMainActivity()
                     val user = auth.currentUser
                 } else {
                     var msg = ""
-                    if (task.exception?.localizedMessage == "The The email address is badly formatted.")
+                    if (task.exception?.localizedMessage == "The email address is badly formatted.")
                         msg = "El correo está mal escrito"
                     else if (task.exception?.localizedMessage == "There is no user record corresponding to this identifier. The user may have been deleted.")
                         msg = "No existe una cuenta con ese correo electrónico"
+                    else if (task.exception?.localizedMessage == "The password is invalid or the user does not have a password.")
+                        msg = "Correo o contraseña invalida"
                     Log.w("Login", "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, msg,
                         Toast.LENGTH_SHORT
@@ -111,10 +113,11 @@ class LoginActivity : AppCompatActivity() {
         if (validateEmail() && validatePassword()) {
             val emailLog = loginBainding.emailEditText.text.toString()
             val passwordLog = loginBainding.passwordEditText.text.toString()
-            val extras = intent.extras
-            val email = extras?.getString("email")
-            val password = extras?.getString("password")
-            if (emailLog == email && passwordLog == password) {
+            //val extras = intent.extras
+            //val email = extras?.getString("email")
+            //val password = extras?.getString("password")
+            signIn()
+            /*if (emailLog == email && passwordLog == password) {
                 goToMainActivity(email, password)
                 cleanViews()
                 loginBainding.passwordTextInputLayout.error = null
@@ -129,17 +132,17 @@ class LoginActivity : AppCompatActivity() {
                         loginBainding.passwordTextInputLayout.error = getString(R.string.password_match)
                     }
                 }
-            }
+            }*/
         } else {
             validateEmail()
             validatePassword()
         }
     }
 
-    private fun goToMainActivity(email: String?, password: String?) {
+    private fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("email", email)
-        intent.putExtra("password", password)
+        //intent.putExtra("email", email)
+        //intent.putExtra("password", password)
         startActivity(intent)
         finish()
     }
