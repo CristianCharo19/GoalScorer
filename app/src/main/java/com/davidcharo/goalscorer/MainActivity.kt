@@ -11,6 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.davidcharo.goalscorer.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,8 +63,9 @@ class MainActivity : AppCompatActivity() {
                 //onBackPressed()
                 //opcion 1
                 val intent = Intent(this, LoginActivity::class.java)
-                intent.putExtra("email", email)
-                intent.putExtra("password", password)
+                FirebaseAuth.getInstance().signOut()
+                //intent.putExtra("email", email)
+                //intent.putExtra("password", password)
                 startActivity(intent)
                 finish()
             }
