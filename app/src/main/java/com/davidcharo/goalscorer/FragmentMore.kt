@@ -2,18 +2,16 @@ package com.davidcharo.goalscorer
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.davidcharo.goalscorer.databinding.FragmentMoreBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
-class FragmentMore : Fragment() {
+class FragmentMore : androidx.fragment.app.Fragment() {
 
     private var _binding: FragmentMoreBinding? = null
     private lateinit var userAdapter: UserAdapter
@@ -25,7 +23,7 @@ class FragmentMore : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
 
         _binding = FragmentMoreBinding.inflate(inflater, container, false)
