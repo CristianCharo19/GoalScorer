@@ -14,6 +14,7 @@ class FavoriteAdapter(
 
     private var listFavorite: MutableList<Favorite> = mutableListOf()
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_view_favorite_item, parent, false)
         return ViewHolder(view)
@@ -40,8 +41,8 @@ class FavoriteAdapter(
         private val binding = CardViewFavoriteItemBinding.bind(view)
         fun bind(favorite: Favorite) {
             with(binding) {
-                nameTextView.text = favorite.team.toString()
-                emailTextView.text = favorite.player.toString()
+                teamTextView.text = favorite.team.toString()
+                leagueTextView.text = favorite.league.toString()
                 if (favorite.urlPicture != null) {
                     Picasso.get().load(favorite.urlPicture).into(pictureImageView);
                 }

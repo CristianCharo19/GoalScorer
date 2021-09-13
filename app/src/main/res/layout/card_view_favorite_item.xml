@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/name_text_view"
+            android:id="@+id/team_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/email_text_view"
+            android:id="@+id/league_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email_example"
@@ -54,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/team_text_view"
             app:layout_constraintVertical_bias="0.391"
             tools:layout_editor_absoluteX="191dp"
             tools:layout_editor_absoluteY="55dp" />
@@ -68,7 +68,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/email_text_view"
+            app:layout_constraintEnd_toStartOf="@+id/league_text_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="contentDescription,ImageContrastCheck"
