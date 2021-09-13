@@ -1,9 +1,13 @@
 package com.davidcharo.goalscorer
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.davidcharo.goalscorer.databinding.ActivityRegisterBinding
 import com.davidcharo.goalscorer.model.User
@@ -11,6 +15,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
+
 
 private const val EMPTY = ""
 
@@ -19,6 +26,19 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var registerBinding: ActivityRegisterBinding
 
     private lateinit var auth: FirebaseAuth
+    private var urlImage : String? = null
+    private val REQUEST_IMAGE_CAPTURE = 1000
+
+
+    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data: Intent? = result.data
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            registerBinding.takePictureImageView.setImageBitmap(imageBitmap)
+        }
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +46,10 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(registerBinding.root)
 
         auth = Firebase.auth
+
+        registerBinding.takePictureImageView.setOnClickListener {
+            dispatchTakePictureIntent()
+        }
 
         registerBinding.registerButton.setOnClickListener {
             val name = registerBinding.nameEditText.text.toString()
@@ -71,22 +95,50 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun createUser(email: String) {
-        val id = auth.currentUser?.uid
-        id?.let { id ->
-        val user = User(id = id, email = email)
-            val db = Firebase.firestore
-            db.collection("users").document(id)
-                .set(user)
-                .addOnSuccessListener { documentReference ->
-                    Log.d("createInDB", "DocumentSnapshot added with ID: ${id}")
+        val db = Firebase.firestore
+        val document = db.collection("users").document()
+        val id = document.id
+
+        val storage = FirebaseStorage.getInstance()
+        val pictureRef = storage.reference.child("users").child(id)
+
+        registerBinding.takePictureImageView.isDrawingCacheEnabled = true
+        registerBinding.takePictureImageView.buildDrawingCache()
+        val bitmap = (registerBinding.takePictureImageView.drawable as BitmapDrawable).bitmap
+        val baos =ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = pictureRef.putBytes(data)
+        val urlTask = uploadTask.continueWithTask { task ->
+            if (!task.isSuccessful){
+                task.exception?.let{
+                    throw it
+                }
+            }
+            pictureRef.downloadUrl
+        }.addOnCompleteListener{ task ->
+            if (task.isSuccessful) {
+                val urlPicture = task.result.toString()
+                with(registerBinding) {
+                    val user = User(id, email, urlPicture)
+                    db.collection("users").document(id).set(user)
                     saveUser()
+                    cleanViews()
                 }
-                .addOnFailureListener { e ->
-                    Log.w("createInDB", "Error adding document", e)
-                }
-    }
+            } else {
+                // Handle failures
+                // ...
+            }
+        }
 }
+    private fun dispatchTakePictureIntent() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        resultLauncher.launch(intent)
+    }
 
 private fun cleanViews() {
     with(registerBinding) {
@@ -102,4 +154,5 @@ private fun saveUser() {
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
     startActivity(intent)
 }
+
 }
