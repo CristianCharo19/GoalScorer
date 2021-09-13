@@ -67,7 +67,7 @@ class RegisterActivity : AppCompatActivity() {
                                     Log.d("register", "createUserWithEmail:success")
                                     Toast.makeText(baseContext, "Registro Exitoso",
                                         Toast.LENGTH_SHORT).show()
-                                    createUser(email)
+                                    createUser(name,email)
                                 } else {
                                     var msg = ""
                                     if (task.exception?.localizedMessage == "The email address is badly formatted.")
@@ -97,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-    private fun createUser(email: String) {
+    private fun createUser(name: String, email: String) {
         val db = Firebase.firestore
         val document = db.collection("users").document()
         val id = document.id
@@ -124,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 val urlPicture = task.result.toString()
                 with(registerBinding) {
-                    val user = User(id, email, urlPicture)
+                    val user = User(id, name, email, urlPicture)
                     db.collection("users").document(id).set(user)
                     saveUser()
                     cleanViews()

@@ -19,4 +19,6 @@
     <string name="empty_field">El campo no puede estar vacio</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_example">David Charo</string>
+    <string name="email_example">crdavidch@outlook.com</string>
 </resources>

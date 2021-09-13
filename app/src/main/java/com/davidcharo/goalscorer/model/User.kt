@@ -2,6 +2,7 @@ package com.davidcharo.goalscorer.model
 
 data class User (
     var id: String? = null,
+    var name: String? = null,
     var email: String? = null,
-    val urlPicture: String? = null
+    var urlPicture: String? = null
         )
