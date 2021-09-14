@@ -74,6 +74,10 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
             }
         }
 
+        binding.swiperefresh.setOnRefreshListener {
+            loadFromServer()
+            binding.swiperefresh.isRefreshing = false
+        }
 
 
         favoriteAdapter = FavoriteAdapter(onItemClicked = { onFavoriteItemClicked(it) })
