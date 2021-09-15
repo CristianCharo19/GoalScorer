@@ -47,8 +47,6 @@ class UserAdapter (
                     Picasso.get(). load (user.urlPicture) .into (pictureImageView);
                 }
             }
-
         }
-
     }
 }
