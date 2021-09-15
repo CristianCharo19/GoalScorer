@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.davidcharo.goalscorer.databinding.FragmentFavoriteBinding
+import com.davidcharo.goalscorer.model.Favorite
 import com.davidcharo.goalscorer.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -34,7 +35,7 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
-    private var urlImage : String? = null
+    private var urlImage: String? = null
     private val REQUEST_IMAGE_CAPTURE = 1000
 
 
@@ -67,7 +68,7 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
             cleanViews()
 
             if (team.isNotEmpty() && league.isNotEmpty()) {
-                createUser(team,league)
+                createUser(team, league)
             } else {
                 Toast.makeText(requireContext(), getString(R.string.form_error), Toast.LENGTH_LONG).show()
                 cleanViews()
@@ -110,27 +111,21 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
 
         var uploadTask = pictureRef.putBytes(data)
         val urlTask = uploadTask.continueWithTask { task ->
-            if (!task.isSuccessful){
-                task.exception?.let{
+            if (!task.isSuccessful) {
+                task.exception?.let {
                     throw it
                 }
             }
             pictureRef.downloadUrl
-        }.addOnCompleteListener{ task ->
+        }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val urlPicture = task.result.toString()
                 with(binding) {
-                    val favorite = Favorite(id,team, league, urlPicture)
+                    val favorite = Favorite(id, team, league, urlPicture)
                     db.collection("favorite").document(id).set(favorite)
-                    //saveUser()
-                    //cleanViews()
                 }
-            } else {
-                // Handle failures
-                // ...
             }
         }
-
     }
 
     private fun cleanViews() {
@@ -139,7 +134,6 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
             leagueEditText.setText(EMPTY)
         }
     }
-
 
 
     private fun dispatchTakePictureIntent() {
