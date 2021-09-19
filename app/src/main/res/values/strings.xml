@@ -24,4 +24,8 @@
     <string name="team">Equipo</string>
     <string name="league">Liga</string>
     <string name="favorite">Favorito</string>
+    <string name="team_example">Arsenal</string>
+    <string name="league_example">English Premier League</string>
+    <string name="sport_example">Soccer</string>
+    <string name="description">Descripción del equipo</string>
 </resources>

@@ -1,59 +1,66 @@
 package com.davidcharo.goalscorer
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.davidcharo.goalscorer.databinding.FragmentScoreBinding
+import com.davidcharo.goalscorer.model.Team
+import com.davidcharo.goalscorer.model.TeamList
+import com.davidcharo.goalscorer.server.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentScore.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragmentScore : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentScoreBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var  teamsAdapter: TeamAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_score, container, false)
+        inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?,): View? {
+        _binding = FragmentScoreBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        teamsAdapter = TeamAdapter(onItemClicked = {onMovieItemClickecd(it)})
+
+        binding.teamRecyclerView.apply{
+            layoutManager = LinearLayoutManager(this@FragmentScore.context)
+            adapter = teamsAdapter
+            setHasFixedSize(false)
+        }
+        loadTeams()
+
+        return  root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentScore.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragmentScore().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun loadTeams() {
+        val apiKey = "1"
+
+        ApiService.create()
+            .getTopRated(apiKey)
+            .enqueue(object : Callback<TeamList> {
+                override fun onFailure(call: Call<TeamList>, t: Throwable) {
+                    Log.d("Eroor", t.message.toString())
                 }
-            }
+
+                override fun onResponse(call: Call<TeamList>, response: Response<TeamList>) {
+                    if (response.isSuccessful){
+                        val listTeam : MutableList<Team> = response.body()?.teams as MutableList<Team>
+                        teamsAdapter.appenItems(listTeam)
+                    }
+                }
+            })
     }
+
+    private fun onMovieItemClickecd(team: Team) {
+        findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(team = team))
+    }
+
 }

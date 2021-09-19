@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
                 //intent.putExtra("password", password)
                 startActivity(intent)
                 finish()
-                
             }
         }
         return super.onOptionsItemSelected(item)
