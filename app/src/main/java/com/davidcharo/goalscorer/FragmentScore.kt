@@ -41,10 +41,10 @@ class FragmentScore : Fragment() {
     }
 
     private fun loadTeams() {
-        val apiKey = "1"
+
 
         ApiService.create()
-            .getTopRated(apiKey)
+            .getTopRated()
             .enqueue(object : Callback<TeamList> {
                 override fun onFailure(call: Call<TeamList>, t: Throwable) {
                     Log.d("Eroor", t.message.toString())

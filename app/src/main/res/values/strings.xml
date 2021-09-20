@@ -1,33 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
     <string name="app_name">GoalScorer</string>
-    <string name="name">Nombre</string>
+    <string name="description">Descripción del equipo</string>
     <string name="email">Correo electrónico</string>
-    <string name="password">Contraseña</string>
-    <string name="repeat_password">Repita la contraseña</string>
-    <string name="register">Registrar</string>
+    <string name="email_example">crdavidch@outlook.com</string>
+    <string name="empty_field">El campo no puede estar vacio</string>
+    <string name="favorite">Favorito</string>
+    <string name="form_error">Debe digitar los campos requeridos</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="league">Liga</string>
+    <string name="league_example">English Premier League</string>
+    <string name="league_info">League: %s</string>
+    <string name="least_password">La contraseña debe tener minimo de 6 caracteres</string>
     <string name="login">Iniciar sesión</string>
     <string name="logout">Cerrar sesión</string>
-    <string name="register_new_account">Registar una nueva cuenta</string>
-    <string name="password_error">Las contraseñas no son iguales</string>
-    <string name="form_error">Debe digitar los campos requeridos</string>
-    <string name="must_register">Debe registrarse</string>
-    <string name="least_password">La contraseña debe tener minimo de 6 caracteres</string>
-    <string name="required_text">Campo requerido</string>
-    <string name="unwanted_mail">Ingrese un correo electrónico como\nejemplo@gmail.com</string>
     <string name="mail_match">Los correos no coinciden</string>
-    <string name="password_match">Las contraseñas no coinciden</string>
-    <string name="empty_field">El campo no puede estar vacio</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="must_register">Debe registrarse</string>
+    <string name="name">Nombre</string>
     <string name="name_example">David Charo</string>
-    <string name="email_example">crdavidch@outlook.com</string>
-    <string name="team">Equipo</string>
-    <string name="league">Liga</string>
-    <string name="favorite">Favorito</string>
-    <string name="team_example">Arsenal</string>
-    <string name="league_example">English Premier League</string>
+    <string name="password">Contraseña</string>
+    <string name="password_error">Las contraseñas no son iguales</string>
+    <string name="password_match">Las contraseñas no coinciden</string>
+    <string name="register">Registrar</string>
+    <string name="register_new_account">Registar una nueva cuenta</string>
+    <string name="repeat_password">Repita la contraseña</string>
+    <string name="required_text">Campo requerido</string>
     <string name="sport_example">Soccer</string>
-    <string name="description">Descripción del equipo</string>
-    <string name="league_info">League: %s</string>
     <string name="sport_info">Sport: %s</string>
+    <string name="team">Equipo</string>
+    <string name="team_example">Arsenal</string>
+    <string name="unwanted_mail">Ingrese un correo electrónico como\nejemplo@gmail.com</string>
 </resources>
