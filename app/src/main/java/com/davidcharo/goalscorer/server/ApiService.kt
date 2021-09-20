@@ -15,7 +15,7 @@ interface ApiService {
     fun getTopRated(@Query("api_key") apiKey: String): Call<TeamList>
 
     companion object{
-        val URL_API = "https://www.thesportsdb.com/api/v1/json/"
+        val URL_API = "https://www.thesportsdb.com/api/v1/json/1/"
 
         fun create(): ApiService{
 

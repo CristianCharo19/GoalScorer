@@ -46,8 +46,8 @@ class TeamAdapter (
                 teamTextView.text = team.strTeam
                 leagueTextView.text = team.strLeague
                 sportTextView.text = team.strSport
-                if (team.strTeamLogo!= null){
-                    Picasso.get().load(team.strTeamLogo).into(pictureImageView)
+                if (team.strTeamBadge!= null){
+                    Picasso.get().load(team.strTeamBadge).into(pictureImageView)
                 }
             }
         }

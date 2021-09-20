@@ -34,9 +34,9 @@ class DetailFragment : Fragment() {
         with(binding) {
             val team = args.team
             teamTextView.text = team.strTeam
-            descriptionTextView.text = team.strDescriptionES
-            if (team.strTeamLogo != null) {
-                Picasso.get().load(team.strTeamLogo).into(imageView3)
+            descriptionTextView.text = team.strDescriptionEN
+            if (team.strTeamBadge != null) {
+                Picasso.get().load(team.strTeamBadge).into(imageView3)
             }
         }
         return root
