@@ -28,4 +28,6 @@
     <string name="league_example">English Premier League</string>
     <string name="sport_example">Soccer</string>
     <string name="description">Descripción del equipo</string>
+    <string name="league_info">League: %s</string>
+    <string name="sport_info">Sport: %s</string>
 </resources>

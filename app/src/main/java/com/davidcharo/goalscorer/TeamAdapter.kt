@@ -44,8 +44,8 @@ class TeamAdapter (
         fun bind(team: Team) {
             with(binding) {
                 teamTextView.text = team.strTeam
-                leagueTextView.text = team.strLeague
-                sportTextView.text = team.strSport
+                leagueTextView.text = context.getString(R.string.league_info, team.strLeague)
+                sportTextView.text = context.getString(R.string.sport_info, team.strSport)
                 if (team.strTeamBadge!= null){
                     Picasso.get().load(team.strTeamBadge).into(pictureImageView)
                 }
