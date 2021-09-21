@@ -131,4 +131,4 @@ data class Team(
     val strWebsite: String?,
     @SerializedName("strYoutube")
     val strYoutube: String?
-) : Serializable
+) : Serializable 
