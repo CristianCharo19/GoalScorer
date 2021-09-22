@@ -9,8 +9,8 @@
     <string name="form_error">Debe digitar los campos requeridos</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="league">Liga</string>
-    <string name="league_example">English Premier League</string>
-    <string name="league_info">League: %s</string>
+    <string name="score_example">1 - 0</string>
+    <string name="score_info">-</string>
     <string name="least_password">La contraseña debe tener minimo de 6 caracteres</string>
     <string name="login">Iniciar sesión</string>
     <string name="logout">Cerrar sesión</string>
@@ -25,9 +25,9 @@
     <string name="register_new_account">Registar una nueva cuenta</string>
     <string name="repeat_password">Repita la contraseña</string>
     <string name="required_text">Campo requerido</string>
-    <string name="sport_example">Soccer</string>
+    <string name="away_team_example">Independiente/nMedellín</string>
     <string name="sport_info">Sport: %s</string>
     <string name="team">Equipo</string>
-    <string name="team_example">Arsenal</string>
+    <string name="home_team_example">Atlético Nacional</string>
     <string name="unwanted_mail">Ingrese un correo electrónico como\nejemplo@gmail.com</string>
 </resources>

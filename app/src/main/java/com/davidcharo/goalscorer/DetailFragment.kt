@@ -32,11 +32,11 @@ class DetailFragment : Fragment() {
         val root: View = binding.root
 
         with(binding) {
-            val team = args.team
-            teamTextView.text = team.strTeam
-            descriptionTextView.text = team.strDescriptionEN
-            if (team.strTeamBadge != null) {
-                Picasso.get().load(team.strTeamBadge).into(imageView3)
+            val event = args.event
+            homeTeamTextView.text = event.strEvent
+            descriptionTextView.text = event.strDescriptionEN
+            if (event.strThumb != null) {
+                Picasso.get().load(event.strThumb).into(imageView3)
             }
         }
         return root

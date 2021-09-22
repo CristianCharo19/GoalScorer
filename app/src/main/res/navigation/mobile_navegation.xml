@@ -33,7 +33,7 @@
         android:name="com.davidcharo.goalscorer.DetailFragment"
         android:label="DetailFragment" >
         <argument
-            android:name="team"
-            app:argType="com.davidcharo.goalscorer.model.Team" />
+            android:name="event"
+            app:argType="com.davidcharo.goalscorer.model.Event" />
     </fragment>
 </navigation>
