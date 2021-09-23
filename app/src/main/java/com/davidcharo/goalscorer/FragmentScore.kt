@@ -9,8 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.davidcharo.goalscorer.databinding.FragmentScoreBinding
-import com.davidcharo.goalscorer.model.Event
-import com.davidcharo.goalscorer.model.EventsList
+import com.davidcharo.goalscorer.model.FixturesList
 import com.davidcharo.goalscorer.server.ApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,23 +20,24 @@ class FragmentScore : Fragment() {
 
     private var _binding: FragmentScoreBinding? = null
     private val binding get() = _binding!!
-    private lateinit var  teamsAdapter: EventAdapter
+    private lateinit var responseAdapter: ResponseAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?,): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
+    ): View? {
         _binding = FragmentScoreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        teamsAdapter = EventAdapter(onItemClicked = {onMovieItemClickecd(it)})
+        responseAdapter = ResponseAdapter(onItemClicked = { onMovieItemClickecd(it) })
 
-        binding.teamRecyclerView.apply{
+        binding.teamRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@FragmentScore.context)
-            adapter = teamsAdapter
+            adapter = responseAdapter
             setHasFixedSize(false)
         }
         loadTeams()
 
-        return  root
+        return root
     }
 
     private fun loadTeams() {
@@ -45,22 +45,21 @@ class FragmentScore : Fragment() {
 
         ApiService.create()
             .getTopRated()
-            .enqueue(object : Callback<EventsList> {
-                override fun onFailure(call: Call<EventsList>, t: Throwable) {
+            .enqueue(object : Callback<FixturesList> {
+                override fun onFailure(call: Call<FixturesList>, t: Throwable) {
                     Log.d("Eroor", t.message.toString())
                 }
 
-                override fun onResponse(call: Call<EventsList>, response: Response<EventsList>) {
-                    if (response.isSuccessful){
-                        val listEvents : MutableList<Event> = response.body()?.events as MutableList<Event>
-                        teamsAdapter.appenItems(listEvents)
+                override fun onResponse(call: Call<FixturesList>, response: Response<FixturesList>) {
+                    if (response.isSuccessful) {
+                        val listResponse: MutableList<com.davidcharo.goalscorer.model.Response> = response.body()?.response as MutableList<com.davidcharo.goalscorer.model.Response>
+                        responseAdapter.appenItems(listResponse)
                     }
                 }
             })
     }
 
-    private fun onMovieItemClickecd(event: Event) {
-        findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(event = event))
+    private fun onMovieItemClickecd(response: com.davidcharo.goalscorer.model.Response) {
+        findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(response = response))
     }
-
 }

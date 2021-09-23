@@ -30,4 +30,5 @@
     <string name="team">Equipo</string>
     <string name="home_team_example">Atlético Nacional</string>
     <string name="unwanted_mail">Ingrese un correo electrónico como\nejemplo@gmail.com</string>
+    <string name="date_info">lun., 20 de sep.</string>
 </resources>

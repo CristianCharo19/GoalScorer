@@ -1,21 +1,22 @@
 package com.davidcharo.goalscorer.server
 
-import com.davidcharo.goalscorer.model.EventsList
+import com.davidcharo.goalscorer.model.FixturesList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Headers
 
 interface ApiService {
 
-    //@Headers("x-apisports-key: ae095914fff0f557ef1769e23bc19db0")
-    @GET("eventspastleague.php?id=4497")
-    fun getTopRated(): Call<EventsList>
+    @Headers("x-rapidapi-key: 19c83eefd8mshf56ed5d8e24d0c0p1c5d3djsna35248ec8299")
+    @GET("fixtures?league=239&season=2021")
+    fun getTopRated(): Call<FixturesList>
 
     companion object{
-        val URL_API = "https://www.thesportsdb.com/api/v1/json/1/"
+        val URL_API = "https://api-football-v1.p.rapidapi.com/v3/"
 
         fun create(): ApiService{
 

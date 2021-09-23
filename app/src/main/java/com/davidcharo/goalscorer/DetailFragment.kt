@@ -31,14 +31,14 @@ class DetailFragment : Fragment() {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        with(binding) {
-            val event = args.event
-            homeTeamTextView.text = event.strEvent
+        /*with(binding) {
+            val response = args.response
+            homeTeamTextView.text =
             descriptionTextView.text = event.strDescriptionEN
             if (event.strThumb != null) {
                 Picasso.get().load(event.strThumb).into(imageView3)
             }
-        }
+        }*/
         return root
     }
 
