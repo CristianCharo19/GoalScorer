@@ -31,4 +31,16 @@
     <string name="home_team_example">Atlético Nacional</string>
     <string name="unwanted_mail">Ingrese un correo electrónico como\nejemplo@gmail.com</string>
     <string name="date_info">lun., 20 de sep.</string>
+    <string name="name_league_example">Primera A Apertura - 1</string>
+    <string name="country_league_example">Colombia</string>
+    <string name="round_league_example">Apertura - 1</string>
+    <string name="season_league_example">2021</string>
+    <string name="game_information">Información del juego</string>
+    <string name="referee">Árbitro</string>
+    <string name="name_referee_example">W. Mosquera</string>
+    <string name="tv_chanel">Canal de TV</string>
+    <string name="name_tv_chanel_example">WinSports</string>
+    <string name="venue">Estadio</string>
+    <string name="name_venue_example">Estadio Manuel Murillo Toro</string>
+    <string name="calendar">Calendario</string>
 </resources>
