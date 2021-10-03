@@ -43,4 +43,5 @@
     <string name="venue">Estadio</string>
     <string name="name_venue_example">Estadio Manuel Murillo Toro</string>
     <string name="calendar">Calendario</string>
+    <string name="name_appp">GoalScorer</string>
 </resources>
