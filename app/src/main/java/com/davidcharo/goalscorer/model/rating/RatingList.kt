@@ -1,10 +1,9 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.rating
 
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-data class FixturesList(
+data class RatingList(
     @SerializedName("errors")
     val errors: List<Any>?,
     @SerializedName("get")
@@ -14,7 +13,7 @@ data class FixturesList(
     @SerializedName("parameters")
     val parameters: Parameters?,
     @SerializedName("response")
-    val response: List<Response>?,
+    val rating: List<Rating>?,
     @SerializedName("results")
     val results: Int?
 )

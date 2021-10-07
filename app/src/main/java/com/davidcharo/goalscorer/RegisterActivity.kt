@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.davidcharo.goalscorer.databinding.ActivityRegisterBinding
-import com.davidcharo.goalscorer.model.User
+import com.davidcharo.goalscorer.model.score.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore

@@ -1,9 +1,9 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.score
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Fulltime(
+data class Goals(
     @SerializedName("away")
     val away: Int?,
     @SerializedName("home")

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.davidcharo.goalscorer.databinding.FragmentDetailBinding
-import com.davidcharo.goalscorer.model.Response
+import com.davidcharo.goalscorer.model.score.Results
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 
@@ -34,9 +34,13 @@ class DetailFragment : Fragment() {
         val root: View = binding.root
 
         with(binding) {
-            val response = args.response
+            val response = args.results
             homeTeamTextView.text = response.teams?.home?.name
-            scoreTextView.text = "${response.goals?.home} - ${response.goals?.away}"
+            if (response.goals?.home == null && response.goals?.away == null){
+                scoreTextView.text = response.league?.country
+            }else {
+                scoreTextView.text = "${response.goals?.home} - ${response.goals?.away}"
+            }
             awayTeamTextView.text = response.teams?.away?.name
             dateTextView.text = formattedDate(response)
             nameLeagueTextView.text = "${response.league?.name} ${response.league?.round}"
@@ -52,10 +56,10 @@ class DetailFragment : Fragment() {
         return root
     }
 
-    private fun formattedDate(response: Response): String {
+    private fun formattedDate(results: Results): String {
         val formato = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+00:00")
         val formato2 = SimpleDateFormat("EEE d 'de' MMM yy")
-        val fecha = formato.parse(response.fixture?.date)
+        val fecha = formato.parse(results.fixture?.date)
         val formattedDate = formato2.format(fecha)
         return formattedDate
     }

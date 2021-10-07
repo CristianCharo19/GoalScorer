@@ -25,7 +25,7 @@
     <string name="register_new_account">Registar una nueva cuenta</string>
     <string name="repeat_password">Repita la contraseña</string>
     <string name="required_text">Campo requerido</string>
-    <string name="away_team_example">Independiente/nMedellín</string>
+    <string name="away_team_example">Independiente\nMedellín</string>
     <string name="sport_info">Sport: %s</string>
     <string name="team">Equipo</string>
     <string name="home_team_example">Atlético Nacional</string>
@@ -44,4 +44,22 @@
     <string name="name_venue_example">Estadio Manuel Murillo Toro</string>
     <string name="calendar">Calendario</string>
     <string name="name_appp">GoalScorer</string>
+    <string name="team_number">#</string>
+    <string name="equipment">Equipo</string>
+    <string name="played">J</string>
+    <string name="won">G</string>
+    <string name="tied">E</string>
+    <string name="lost">P</string>
+    <string name="goals">+/-</string>
+    <string name="golas_diff">DG</string>
+    <string name="points">PTS</string>
+    <string name="rank_example">10</string>
+    <string name="team_name_example">Independiente Medellin</string>
+    <string name="played_exmaple">12</string>
+    <string name="win_example">9</string>
+    <string name="draw_example">2</string>
+    <string name="lose_example">1</string>
+    <string name="goals_example">22-12</string>
+    <string name="goals_diff_example">14</string>
+    <string name="points_example">29</string>
 </resources>

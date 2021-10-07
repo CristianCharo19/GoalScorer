@@ -1,4 +1,4 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.score
 
 data class User (
     var id: String? = null,

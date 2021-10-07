@@ -1,10 +1,10 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.score
 
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Response(
+data class Results(
     @SerializedName("fixture")
     val fixture: Fixture?,
     @SerializedName("goals")

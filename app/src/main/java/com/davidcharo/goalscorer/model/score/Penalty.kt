@@ -1,10 +1,9 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.score
 
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-data class Extratime(
+data class Penalty(
     @SerializedName("away")
     val away: Any?,
     @SerializedName("home")

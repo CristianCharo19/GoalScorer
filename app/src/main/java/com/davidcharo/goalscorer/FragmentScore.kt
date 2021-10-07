@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.davidcharo.goalscorer.databinding.FragmentScoreBinding
-import com.davidcharo.goalscorer.model.FixturesList
+import com.davidcharo.goalscorer.model.score.FixturesList
+import com.davidcharo.goalscorer.model.score.Results
 import com.davidcharo.goalscorer.server.ApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,7 +21,7 @@ class FragmentScore : Fragment() {
 
     private var _binding: FragmentScoreBinding? = null
     private val binding get() = _binding!!
-    private lateinit var responseAdapter: ResponseAdapter
+    private lateinit var scoresAdapter: ScoresAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
@@ -28,11 +29,11 @@ class FragmentScore : Fragment() {
         _binding = FragmentScoreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        responseAdapter = ResponseAdapter(onItemClicked = { onMovieItemClickecd(it) })
+        scoresAdapter = ScoresAdapter(onItemClicked = { onMovieItemClickecd(it) })
 
         binding.teamRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@FragmentScore.context)
-            adapter = responseAdapter
+            adapter = scoresAdapter
             setHasFixedSize(false)
         }
         loadTeams()
@@ -42,8 +43,8 @@ class FragmentScore : Fragment() {
 
     private fun loadTeams() {
 
-
-        ApiService.create()
+        val URL_API = "https://api-football-v1.p.rapidapi.com/v3/"
+        ApiService.create(URL_API)
             .getTopRated()
             .enqueue(object : Callback<FixturesList> {
                 override fun onFailure(call: Call<FixturesList>, t: Throwable) {
@@ -52,14 +53,14 @@ class FragmentScore : Fragment() {
 
                 override fun onResponse(call: Call<FixturesList>, response: Response<FixturesList>) {
                     if (response.isSuccessful) {
-                        val listResponse: MutableList<com.davidcharo.goalscorer.model.Response> = response.body()?.response as MutableList<com.davidcharo.goalscorer.model.Response>
-                        responseAdapter.appenItems(listResponse)
+                        val listResults: MutableList<Results> = response.body()?.response as MutableList<Results>
+                        scoresAdapter.appenItems(listResults)
                     }
                 }
             })
     }
 
-    private fun onMovieItemClickecd(response: com.davidcharo.goalscorer.model.Response) {
-        findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(response = response))
+    private fun onMovieItemClickecd(results: Results) {
+        findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(results= results))
     }
 }

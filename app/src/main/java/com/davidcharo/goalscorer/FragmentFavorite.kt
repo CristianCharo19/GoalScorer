@@ -14,8 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.davidcharo.goalscorer.databinding.FragmentFavoriteBinding
-import com.davidcharo.goalscorer.model.Favorite
-import com.davidcharo.goalscorer.model.User
+import com.davidcharo.goalscorer.model.score.Favorite
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore

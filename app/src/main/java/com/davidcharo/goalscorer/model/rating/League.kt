@@ -1,7 +1,9 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.rating
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 
 data class League(
     @SerializedName("country")
@@ -14,8 +16,8 @@ data class League(
     val logo: String?,
     @SerializedName("name")
     val name: String?,
-    @SerializedName("round")
-    val round: String?,
     @SerializedName("season")
-    val season: Int?
-)
+    val season: Int?,
+    @SerializedName("standings")
+    val standings: List<List<Standing>>?
+) : Serializable

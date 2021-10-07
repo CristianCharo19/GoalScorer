@@ -1,11 +1,11 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.score
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Teams(
+data class Halftime(
     @SerializedName("away")
-    val away: Away?,
+    val away: Int?,
     @SerializedName("home")
-    val home: Home?
+    val home: Int?
 )

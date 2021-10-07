@@ -5,8 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.davidcharo.goalscorer.databinding.CardViewFavoriteItemBinding
-import com.davidcharo.goalscorer.databinding.CardViewUsersItemBinding
-import com.davidcharo.goalscorer.model.Favorite
+import com.davidcharo.goalscorer.model.score.Favorite
 import com.squareup.picasso.Picasso
 
 class FavoriteAdapter(

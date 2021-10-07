@@ -1,15 +1,13 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer.model.rating
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Home(
+data class Team(
     @SerializedName("id")
     val id: Int?,
     @SerializedName("logo")
     val logo: String?,
     @SerializedName("name")
-    val name: String?,
-    @SerializedName("winner")
-    val winner: Any?
+    val name: String?
 )

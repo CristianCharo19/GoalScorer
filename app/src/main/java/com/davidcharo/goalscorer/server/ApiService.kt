@@ -1,6 +1,7 @@
 package com.davidcharo.goalscorer.server
 
-import com.davidcharo.goalscorer.model.FixturesList
+import com.davidcharo.goalscorer.model.score.FixturesList
+import com.davidcharo.goalscorer.model.rating.RatingList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -15,10 +16,15 @@ interface ApiService {
     @GET("fixtures?league=239&season=2021")
     fun getTopRated(): Call<FixturesList>
 
-    companion object{
-        val URL_API = "https://api-football-v1.p.rapidapi.com/v3/"
+    @Headers("x-rapidapi-key: 19c83eefd8mshf56ed5d8e24d0c0p1c5d3djsna35248ec8299")
+    @GET("standings?season=2021&league=239")
+    fun getTopRating(): Call<RatingList>
 
-        fun create(): ApiService{
+
+    companion object{
+
+
+        fun create(URL_API: String): ApiService{
 
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
