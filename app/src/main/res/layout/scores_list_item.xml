@@ -76,6 +76,7 @@
                 android:text="@string/score_example"
                 android:textColor="@color/black"
                 android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/picture_away_team_image_view"
                 app:layout_constraintStart_toEndOf="@+id/picture_home_team_image_view"

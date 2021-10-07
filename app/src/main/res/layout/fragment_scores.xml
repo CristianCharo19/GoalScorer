@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_black_1000_10"
-    tools:context=".FragmentMore" >
+    android:background="@color/md_black_1000_75"
+    tools:context=".FragmentScore" >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/user_recycler_view"
+        android:id="@+id/team_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/card_view_users_item" />
+        tools:listitem="@layout/scores_list_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

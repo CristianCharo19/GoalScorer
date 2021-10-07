@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.davidcharo.goalscorer.databinding.FragmentNewsBinding
-import com.davidcharo.goalscorer.model.rating.Rating
+import com.davidcharo.goalscorer.databinding.FragmentPositionsBinding
 import com.davidcharo.goalscorer.model.rating.RatingList
 import com.davidcharo.goalscorer.model.rating.Standing
 import com.davidcharo.goalscorer.server.ApiService
@@ -19,14 +18,14 @@ import retrofit2.Response
 
 class FragmentNews : Fragment() {
 
-    private var _binding: FragmentNewsBinding? = null
+    private var _binding: FragmentPositionsBinding? = null
     private val binding get() = _binding!!
     private lateinit var ratingAdapter: RatingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+        _binding = FragmentPositionsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         ratingAdapter = RatingAdapter (onItemClicked = { onMovieItemClickecd(it) })

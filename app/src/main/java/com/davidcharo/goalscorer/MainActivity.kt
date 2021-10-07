@@ -12,8 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.davidcharo.goalscorer.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_score, R.id.navigation_news, R.id.navigation_favorite, R.id.navigation_more
+                R.id.navigation_scores, R.id.navigation_positions, R.id.navigation_favorite, R.id.navigation_account
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

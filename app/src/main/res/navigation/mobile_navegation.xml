@@ -2,36 +2,36 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navegation"
-    app:startDestination="@id/navigation_score">
+    app:startDestination="@id/navigation_scores">
 
     <fragment
-        android:id="@+id/navigation_score"
+        android:id="@+id/navigation_scores"
         android:name="com.davidcharo.goalscorer.FragmentScore"
         android:label="Resultados"
-        tools:layout="@layout/fragment_score" >
+        tools:layout="@layout/fragment_scores" >
         <action
             android:id="@+id/action_navigation_score_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_news"
+        android:id="@+id/navigation_positions"
         android:name="com.davidcharo.goalscorer.FragmentNews"
-        android:label="Noticias"
-        tools:layout="@layout/fragment_news" />
+        android:label="Clasificación"
+        tools:layout="@layout/fragment_positions" />
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.davidcharo.goalscorer.FragmentFavorite"
         android:label="Favoritos"
         tools:layout="@layout/fragment_favorite" />
     <fragment
-        android:id="@+id/navigation_more"
+        android:id="@+id/navigation_account"
         android:name="com.davidcharo.goalscorer.FragmentMore"
-        android:label="Más"
-        tools:layout="@layout/fragment_more" />
+        android:label="Perfil"
+        tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.davidcharo.goalscorer.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="Partido">
         <argument
             android:name="results"
             app:argType="com.davidcharo.goalscorer.model.score.Results" />

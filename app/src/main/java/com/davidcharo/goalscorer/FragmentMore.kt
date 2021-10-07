@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.davidcharo.goalscorer.databinding.FragmentMoreBinding
+import com.davidcharo.goalscorer.databinding.FragmentAccountBinding
 import com.davidcharo.goalscorer.model.score.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -14,7 +14,7 @@ import com.google.firebase.ktx.Firebase
 
 class FragmentMore : androidx.fragment.app.Fragment() {
 
-    private var _binding: FragmentMoreBinding? = null
+    private var _binding: FragmentAccountBinding? = null
     private lateinit var userAdapter: UserAdapter
 
     // This property is only valid between onCreateView and
@@ -27,7 +27,7 @@ class FragmentMore : androidx.fragment.app.Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        _binding = FragmentMoreBinding.inflate(inflater, container, false)
+        _binding = FragmentAccountBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
 

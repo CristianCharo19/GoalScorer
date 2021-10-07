@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.davidcharo.goalscorer.databinding.FragmentScoreBinding
+import com.davidcharo.goalscorer.databinding.FragmentScoresBinding
 import com.davidcharo.goalscorer.model.score.FixturesList
 import com.davidcharo.goalscorer.model.score.Results
 import com.davidcharo.goalscorer.server.ApiService
@@ -19,14 +19,14 @@ import retrofit2.Response
 
 class FragmentScore : Fragment() {
 
-    private var _binding: FragmentScoreBinding? = null
+    private var _binding: FragmentScoresBinding? = null
     private val binding get() = _binding!!
     private lateinit var scoresAdapter: ScoresAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentScoreBinding.inflate(inflater, container, false)
+        _binding = FragmentScoresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         scoresAdapter = ScoresAdapter(onItemClicked = { onMovieItemClickecd(it) })
