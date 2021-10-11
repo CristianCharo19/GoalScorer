@@ -18,12 +18,11 @@ class FavoriteAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_view_favorite_item, parent, false)
         return ViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listFavorite[position])
-        holder.itemView.setOnClickListener{onItemClicked(listFavorite[position])}
+        holder.itemView.setOnClickListener { onItemClicked(listFavorite[position]) }
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +43,7 @@ class FavoriteAdapter(
                 teamTextView.text = favorite.team.toString()
                 leagueTextView.text = favorite.league.toString()
                 if (favorite.urlPicture != null) {
-                    Picasso.get().load(favorite.urlPicture).into(pictureImageView);
+                    Picasso.get().load(favorite.urlPicture).into(pictureImageView)
                 }
             }
         }

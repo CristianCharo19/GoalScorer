@@ -112,26 +112,7 @@ class LoginActivity : AppCompatActivity() {
         if (validateEmail() && validatePassword()) {
             val emailLog = loginBainding.emailEditText.text.toString()
             val passwordLog = loginBainding.passwordEditText.text.toString()
-            //val extras = intent.extras
-            //val email = extras?.getString("email")
-            //val password = extras?.getString("password")
             signIn()
-            /*if (emailLog == email && passwordLog == password) {
-                goToMainActivity(email, password)
-                cleanViews()
-                loginBainding.passwordTextInputLayout.error = null
-            } else {
-                if (emailLog != email && passwordLog != password) {
-                    loginBainding.emailTextInputLayout.error = getString(R.string.mail_match)
-                    loginBainding.passwordTextInputLayout.error = getString(R.string.password_match)
-                } else {
-                    if (emailLog != email) {
-                        loginBainding.emailTextInputLayout.error = getString(R.string.mail_match)
-                    } else {
-                        loginBainding.passwordTextInputLayout.error = getString(R.string.password_match)
-                    }
-                }
-            }*/
         } else {
             validateEmail()
             validatePassword()
@@ -140,8 +121,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
-        //intent.putExtra("email", email)
-        //intent.putExtra("password", password)
         startActivity(intent)
         finish()
     }

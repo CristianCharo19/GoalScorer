@@ -9,7 +9,7 @@ import com.davidcharo.goalscorer.model.score.User
 import com.squareup.picasso.Picasso
 
 
-class UserAdapter (
+class UserAdapter(
     private val onItemClicked: (User) -> Unit,
 ) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
@@ -23,7 +23,7 @@ class UserAdapter (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(listUser[position])
-        holder.itemView.setOnClickListener{onItemClicked(listUser[position])}
+        holder.itemView.setOnClickListener { onItemClicked(listUser[position]) }
     }
 
     override fun getItemCount(): Int {
@@ -31,20 +31,20 @@ class UserAdapter (
 
     }
 
-    fun appenItems(newItems: MutableList<User>){
+    fun appenItems(newItems: MutableList<User>) {
         listUser.clear()
         listUser.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = CardViewUsersItemBinding.bind(view)
-        fun bind(user: User){
-            with(binding){
+        fun bind(user: User) {
+            with(binding) {
                 nameTextView.text = user.name.toString()
                 emailTextView.text = user.email.toString()
-                if (user.urlPicture != null){
-                    Picasso.get(). load (user.urlPicture) .into (pictureImageView);
+                if (user.urlPicture != null) {
+                    Picasso.get().load(user.urlPicture).into(pictureImageView)
                 }
             }
         }

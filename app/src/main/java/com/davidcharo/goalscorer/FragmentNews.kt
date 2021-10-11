@@ -2,10 +2,10 @@ package com.davidcharo.goalscorer
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.davidcharo.goalscorer.databinding.FragmentPositionsBinding
 import com.davidcharo.goalscorer.model.rating.RatingList
@@ -28,7 +28,7 @@ class FragmentNews : Fragment() {
         _binding = FragmentPositionsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        ratingAdapter = RatingAdapter (onItemClicked = { onMovieItemClickecd(it) })
+        ratingAdapter = RatingAdapter(onItemClicked = { onMovieItemClickecd(it) })
 
         binding.ratingRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@FragmentNews.context)
@@ -60,6 +60,6 @@ class FragmentNews : Fragment() {
     }
 
     private fun onMovieItemClickecd(standing: Standing) {
-     //   findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(rating = rating))
+        //   findNavController().navigate(FragmentScoreDirections.actionNavigationScoreToDetailFragment(rating = rating))
     }
 }

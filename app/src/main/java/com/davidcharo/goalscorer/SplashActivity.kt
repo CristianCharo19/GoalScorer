@@ -1,6 +1,5 @@
 package com.davidcharo.goalscorer
 
-//import android.support.v7.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Window
@@ -22,9 +21,9 @@ class SplashActivity : AppCompatActivity() {
         val timer = Timer()
         auth = Firebase.auth
         timer.schedule(timerTask {
-            if (auth.currentUser != null){
+            if (auth.currentUser != null) {
                 goToMainActivity()
-            }else{
+            } else {
                 goToLoginActivity()
             }
         }, 2000

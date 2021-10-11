@@ -29,7 +29,6 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -37,7 +36,7 @@ class DetailFragment : Fragment() {
             val response = args.results
             homeTeamTextView.text = response.teams?.home?.name
             if (response.goals?.home == null && response.goals?.away == null){
-                scoreTextView.text = response.league?.country
+                scoreTextView.text = getString(R.string.game_time)
             }else {
                 scoreTextView.text = "${response.goals?.home} - ${response.goals?.away}"
             }

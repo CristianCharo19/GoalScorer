@@ -27,13 +27,11 @@ class MainActivity : AppCompatActivity() {
         val extras = intent.extras
         email = extras?.getString("email").toString()
         password = extras?.getString("password").toString()
-        //mainBinding.emailTextView.text = email
 
         val navView: BottomNavigationView = findViewById(R.id.bottom_navigation_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_scores, R.id.navigation_positions, R.id.navigation_favorite, R.id.navigation_account
@@ -57,13 +55,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.logout_menu -> {
-                //opcion 2
-                //onBackPressed()
-                //opcion 1
                 val intent = Intent(this, LoginActivity::class.java)
                 FirebaseAuth.getInstance().signOut()
-                //intent.putExtra("email", email)
-                //intent.putExtra("password", password)
                 startActivity(intent)
                 finish()
             }

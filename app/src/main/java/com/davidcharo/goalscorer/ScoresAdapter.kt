@@ -16,14 +16,11 @@ class ScoresAdapter(
     private val onItemClicked: (Results) -> Unit,
 ) : RecyclerView.Adapter<ScoresAdapter.ViewHolder>() {
 
-
     private var listResults: MutableList<Results> = mutableListOf()
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.scores_list_item, parent, false)
         return ViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -51,7 +48,7 @@ class ScoresAdapter(
             with(binding) {
                 homeTeamTextView.text = results.teams?.home?.name
                 if (results.goals?.home == null && results.goals?.away == null) {
-                    scoreTextView.text = results.league?.country
+                    scoreTextView.text = "20:00"
                 } else {
                     scoreTextView.text = "${results.goals.home} - ${results.goals.away}"
                 }

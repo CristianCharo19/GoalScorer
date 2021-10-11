@@ -26,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var registerBinding: ActivityRegisterBinding
 
     private lateinit var auth: FirebaseAuth
-    private var urlImage : String? = null
+    private var urlImage: String? = null
     private val REQUEST_IMAGE_CAPTURE = 1000
 
 
@@ -37,8 +37,6 @@ class RegisterActivity : AppCompatActivity() {
             registerBinding.takePictureImageView.setImageBitmap(imageBitmap)
         }
     }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
                                     Log.d("register", "createUserWithEmail:success")
                                     Toast.makeText(baseContext, "Registro Exitoso",
                                         Toast.LENGTH_SHORT).show()
-                                    createUser(name,email)
+                                    createUser(name, email)
                                 } else {
                                     var msg = ""
                                     if (task.exception?.localizedMessage == "The email address is badly formatted.")
@@ -95,8 +93,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun createUser(name: String, email: String) {
         val db = Firebase.firestore
         val document = db.collection("users").document()
@@ -108,19 +104,19 @@ class RegisterActivity : AppCompatActivity() {
         registerBinding.takePictureImageView.isDrawingCacheEnabled = true
         registerBinding.takePictureImageView.buildDrawingCache()
         val bitmap = (registerBinding.takePictureImageView.drawable as BitmapDrawable).bitmap
-        val baos =ByteArrayOutputStream()
+        val baos = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val data = baos.toByteArray()
 
         var uploadTask = pictureRef.putBytes(data)
         val urlTask = uploadTask.continueWithTask { task ->
-            if (!task.isSuccessful){
-                task.exception?.let{
+            if (!task.isSuccessful) {
+                task.exception?.let {
                     throw it
                 }
             }
             pictureRef.downloadUrl
-        }.addOnCompleteListener{ task ->
+        }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val urlPicture = task.result.toString()
                 with(registerBinding) {
@@ -134,25 +130,25 @@ class RegisterActivity : AppCompatActivity() {
                 // ...
             }
         }
-}
+    }
+
     private fun dispatchTakePictureIntent() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         resultLauncher.launch(intent)
     }
 
-private fun cleanViews() {
-    with(registerBinding) {
-        nameEditText.setText(EMPTY)
-        emailEditText.setText(EMPTY)
-        passwordEditText.setText(EMPTY)
-        repPasswordEditText.setText(EMPTY)
+    private fun cleanViews() {
+        with(registerBinding) {
+            nameEditText.setText(EMPTY)
+            emailEditText.setText(EMPTY)
+            passwordEditText.setText(EMPTY)
+            repPasswordEditText.setText(EMPTY)
+        }
     }
-}
 
-private fun saveUser() {
-    val intent = Intent(this, LoginActivity::class.java)
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-    startActivity(intent)
-}
-
+    private fun saveUser() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+    }
 }

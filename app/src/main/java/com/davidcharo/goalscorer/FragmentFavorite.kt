@@ -18,10 +18,7 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private lateinit var favoriteAdapter: FavoriteAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +32,6 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
         binding.addButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_favorite_to_fragmentAddFavorite)
         }
-
-
 
         binding.swiperefresh.setOnRefreshListener {
             loadFromServer()
@@ -67,10 +62,8 @@ class FragmentFavorite : androidx.fragment.app.Fragment() {
         }
     }
 
-
     private fun onFavoriteItemClicked(favorite: Favorite) {
         //findNavController().navigate(ListFragmentDirections.actionNavigationListToDetailFragment(debtor = debtor))
-
     }
 
     override fun onDestroyView() {

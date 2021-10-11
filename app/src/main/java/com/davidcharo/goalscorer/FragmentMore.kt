@@ -17,8 +17,6 @@ class FragmentMore : androidx.fragment.app.Fragment() {
     private var _binding: FragmentAccountBinding? = null
     private lateinit var userAdapter: UserAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -60,7 +58,6 @@ class FragmentMore : androidx.fragment.app.Fragment() {
 
     private fun onDebtorItemClicked(debtor: User) {
         //findNavController().navigate(ListFragmentDirections.actionNavigationListToDetailFragment(debtor = debtor))
-
     }
 
     override fun onDestroyView() {

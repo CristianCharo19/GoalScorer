@@ -5,8 +5,8 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:background="@color/md_black_1000_75">
+    android:background="@color/md_black_1000_75"
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/take_picture_image_view"
@@ -132,9 +132,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/darkslategray"
-        app:cornerRadius="16dp"
         android:text="@string/register"
         android:textColor="@color/black"
+        app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
