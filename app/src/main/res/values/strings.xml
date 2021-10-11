@@ -62,4 +62,5 @@
     <string name="goals_example">22-12</string>
     <string name="goals_diff_example">14</string>
     <string name="points_example">29</string>
+    <string name="add">Añadir</string>
 </resources>

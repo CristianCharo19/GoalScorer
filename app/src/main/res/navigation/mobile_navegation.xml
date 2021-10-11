@@ -22,7 +22,11 @@
         android:id="@+id/navigation_favorite"
         android:name="com.davidcharo.goalscorer.FragmentFavorite"
         android:label="Favoritos"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_navigation_favorite_to_fragmentAddFavorite"
+            app:destination="@id/fragmentAddFavorite" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.davidcharo.goalscorer.FragmentMore"
@@ -36,4 +40,9 @@
             android:name="results"
             app:argType="com.davidcharo.goalscorer.model.score.Results" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentAddFavorite"
+        android:name="com.davidcharo.goalscorer.model.FragmentAddFavorite"
+        android:label="Añadir Favorito"
+        tools:layout="@layout/fragment_add_favorite" />
 </navigation>

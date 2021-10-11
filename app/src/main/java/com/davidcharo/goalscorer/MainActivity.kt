@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         var badge = navView.getOrCreateBadge(navView.menu.getItem(1).itemId)
         badge.isVisible = true
         // An icon only badge will be displayed unless a number is set:
-        badge.number = 99
+        badge.number = 20
     }
 
 

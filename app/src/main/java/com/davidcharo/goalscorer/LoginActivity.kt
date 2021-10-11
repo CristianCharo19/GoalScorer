@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.doAfterTextChanged
 import com.davidcharo.goalscorer.databinding.ActivityLoginBinding
 import com.davidcharo.goalscorer.utils.MIN_SIZE_PASSWORD
