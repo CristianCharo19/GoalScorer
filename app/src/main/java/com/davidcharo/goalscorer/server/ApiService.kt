@@ -1,7 +1,7 @@
 package com.davidcharo.goalscorer.server
 
-import com.davidcharo.goalscorer.model.score.FixturesList
 import com.davidcharo.goalscorer.model.rating.RatingList
+import com.davidcharo.goalscorer.model.score.FixturesList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -21,14 +21,11 @@ interface ApiService {
     fun getTopRating(): Call<RatingList>
 
 
-    companion object{
-
-
-        fun create(URL_API: String): ApiService{
+    companion object {
+        fun create(URL_API: String): ApiService {
 
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
@@ -41,7 +38,6 @@ interface ApiService {
                 .build()
 
             return retrofit.create(ApiService::class.java)
-
         }
     }
 }

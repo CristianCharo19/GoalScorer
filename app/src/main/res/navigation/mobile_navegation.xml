@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentAddFavorite"
-        android:name="com.davidcharo.goalscorer.model.FragmentAddFavorite"
+        android:name="com.davidcharo.goalscorer.FragmentAddFavorite"
         android:label="Añadir Favorito"
         tools:layout="@layout/fragment_add_favorite" />
 </navigation>

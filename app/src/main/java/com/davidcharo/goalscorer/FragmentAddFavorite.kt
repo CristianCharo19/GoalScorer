@@ -1,11 +1,10 @@
-package com.davidcharo.goalscorer.model
+package com.davidcharo.goalscorer
 
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +12,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.davidcharo.goalscorer.FavoriteAdapter
-import com.davidcharo.goalscorer.R
 import com.davidcharo.goalscorer.databinding.FragmentAddFavoriteBinding
 import com.davidcharo.goalscorer.model.score.Favorite
 import com.davidcharo.goalscorer.utils.EMPTY
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
@@ -31,8 +27,6 @@ class FragmentAddFavorite : Fragment() {
     private var _binding: FragmentAddFavoriteBinding? = null
     private lateinit var favoriteAdapter: FavoriteAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
@@ -56,8 +50,7 @@ class FragmentAddFavorite : Fragment() {
 
         _binding = FragmentAddFavoriteBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
+        
         auth = Firebase.auth
 
         binding.takePictureImageView.setOnClickListener {
